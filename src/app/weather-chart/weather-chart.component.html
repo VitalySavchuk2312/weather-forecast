@@ -1,0 +1,21 @@
+<mat-form-field>
+  <mat-select placeholder="Choose a city" [(ngModel)]="selectedOption" (click)="getSelectedCity(selectedOption)">
+    <mat-option *ngFor="let city of weatherInfo" [value]="city.city">
+      {{city.city}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div *ngFor="let city of weatherInfo">
+  <div *ngIf="city.city === selectedOption">
+      <h1>{{city.city}}</h1>
+      <div>
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="neededDays"
+                [options]="barChartOptions"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+  </div>
+</div>
