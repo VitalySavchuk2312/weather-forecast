@@ -75,8 +75,8 @@ export class WeatherChartComponent implements OnInit {
     for (let i = 0; i < citiesLength; i++) {
       for (let j = 0; j < daysLength; j++) {
         this.http.get(`http://api.apixu.com/v1/history.json?key=e79b30662c3b4c44b5e45653181809&q=${this.weatherInfo[i].city}&dt=${this.dateToDisplay[j].year}-${this.dateToDisplay[j].month + 1}-${this.dateToDisplay[j].day}`)
-        .subscribe(response => {
-          this.weatherInfo[i].temperature.push(response.forecast.forecastday[0].day.avgtemp_c);
+        .subscribe((response: any) => {
+          this.weatherInfo[i].temperature.push(response.forecast.forecastday[0].day.avgtemp_c)
         });
       }
     }
